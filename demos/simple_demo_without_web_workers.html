@@ -43,6 +43,10 @@ document.getElementById("go").onclick = function () {
     /// Now, let's try to decompress it to make sure it works both ways.
     var data_decompressed = my_lzma.decompress(data_compressed);
     alert("Decompressed: " + data_decompressed + "\nDecompressed Type:" + data_decompressed.constructor);
+
+    /// Finally let's decode the array as a string.
+    var data_decoded = ab2str(new Uint8Array(data_decompressed).buffer);
+    alert("Decoded: " + data_decoded + "\nDecoded Type:" + data_decoded.constructor);
 }
 
 </script>
