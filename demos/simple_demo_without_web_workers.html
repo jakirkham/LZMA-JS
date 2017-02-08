@@ -39,7 +39,7 @@ document.getElementById("go").onclick = function () {
     /// Then, let's compress it.
     var data_compressed = my_lzma.compress(data_arr, compression_mode);
     alert("Compressed: " + data_compressed + "\nCompressed Type:" + data_compressed.constructor);
-        
+
     /// Now, let's try to decompress it to make sure it works both ways.
     var data_decompressed = my_lzma.decompress(data_compressed);
     alert("Decompressed: " + data_decompressed + "\nDecompressed Type:" + data_decompressed.constructor);
