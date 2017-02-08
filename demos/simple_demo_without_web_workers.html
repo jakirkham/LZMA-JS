@@ -17,15 +17,15 @@ var compression_mode = 1,
 document.getElementById("go").onclick = function () {
     /// First, get the data.
     var data_raw = document.getElementById("compression_el").value;
-    alert("Input: " + data_raw);
+    alert("Input: " + data_raw + "\nInput Type:" + data_raw.constructor);
 
     /// Then, let's compress it.
     var data_compressed = my_lzma.compress(data_raw, compression_mode);
-    alert("Compressed: " + data_compressed);
+    alert("Compressed: " + data_compressed + "\nCompressed Type:" + data_compressed.constructor);
         
     /// Now, let's try to decompress it to make sure it works both ways.
     var data_decompressed = my_lzma.decompress(data_compressed);
-    alert("Decompressed: " + data_decompressed);
+    alert("Decompressed: " + data_decompressed + "\nDecompressed Type:" + data_decompressed.constructor);
 }
 
 </script>
