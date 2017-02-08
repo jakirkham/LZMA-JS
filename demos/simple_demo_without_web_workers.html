@@ -14,10 +14,27 @@ a browser-based implementation of the LZMA compression algorithm without the use
 var compression_mode = 1,
     my_lzma = LZMA; /// lzma_worker.js creates a global LZMA object. We store it as a new variable just to match simple_demo.html.
 
+function ab2str(buf) {
+    return String.fromCharCode.apply(null, new Uint16Array(buf));
+}
+
+function str2ab(str) {
+    var buf = new ArrayBuffer(str.length*2); // 2 bytes for each char
+    var bufView = new Uint16Array(buf);
+    for (var i=0, strLen=str.length; i < strLen; i++) {
+      bufView[i] = str.charCodeAt(i);
+    }
+    return buf;
+}
+
 document.getElementById("go").onclick = function () {
     /// First, get the data.
     var data_raw = document.getElementById("compression_el").value;
     alert("Input: " + data_raw + "\nInput Type:" + data_raw.constructor);
+
+    /// Convert it to an Array.
+    var data_arr = new Uint8Array(str2ab(data_raw));
+    alert("Input Array: " + data_arr + "\nInput Array Type:" + data_arr.constructor);
 
     /// Then, let's compress it.
     var data_compressed = my_lzma.compress(data_raw, compression_mode);
